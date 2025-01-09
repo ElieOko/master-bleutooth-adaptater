@@ -1,0 +1,52 @@
+package com.master.masteradaptaterbleutooth.core
+
+import android.content.pm.PackageManager
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.master.masteradaptaterbleutooth.core.ui.theme.MasterAdaptaterBleutoothTheme
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent {
+            MasterAdaptaterBleutoothTheme {
+                // Check to see if the Bluetooth classic feature is available.
+                val bluetoothAvailable: Boolean = packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)
+                // Check to see if the BLE feature is available.
+                val bluetoothLEAvailable: Boolean = packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Greeting(
+                        name = "Android BLE $bluetoothLEAvailable|B classic $bluetoothAvailable",
+                        modifier = Modifier.padding(innerPadding)
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun Greeting(name: String, modifier: Modifier = Modifier) {
+    Text(
+        text = "Hello $name!",
+        modifier = modifier
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    MasterAdaptaterBleutoothTheme {
+        Greeting("Android")
+    }
+}
