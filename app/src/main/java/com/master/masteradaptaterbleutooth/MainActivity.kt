@@ -1,5 +1,6 @@
 package com.master.masteradaptaterbleutooth
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,9 +20,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MasterAdaptaterBleutoothTheme {
+                // Check to see if the Bluetooth classic feature is available.
+                val bluetoothAvailable: Boolean = packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)
+                // Check to see if the BLE feature is available.
+                val bluetoothLEAvailable: Boolean = packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = "Android BLE $bluetoothLEAvailable|B classic $bluetoothAvailable",
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
