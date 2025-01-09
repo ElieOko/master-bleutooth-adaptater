@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.BLUETOOTH"
-        android:maxSdkVersion="30"
-        tools:ignore="CoarseFineLocation" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
-        android:maxSdkVersion="30" />
+
+<!--    <uses-feature android:name="android.hardware.bluetooth" android:required="true"/>-->
+    <!--   Permet aux applications de se connecter à des dispositifs bluetooth appariés. <-->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!--   Permet aux applications de découvrir et de coupler des dispositifs bluetooth. <-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!--   Permet à une application d'accéder à un emplacement précis.   <-->
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <!--   Exigé de pouvoir faire de la publicité sur les appareils Bluetooth à proximité. <-->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"/>
+    <!--   Obligatoire de pouvoir se connecter à des dispositifs Bluetooth appariés. <-->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <!--   Permet à une application d'accéder à un emplacement approximatif.  <-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!--   Permet à une application d'accéder à un emplacement précis.   <-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!--   Permet aux applications d'accéder à des informations sur les réseaux.   <-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--   Permet l'accès au vibreur.    <-->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
