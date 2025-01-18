@@ -32,13 +32,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.master.masteradaptaterbleutooth.core.permission.PermissionAndroid.BLUETOOTH_CONNECT
+import com.master.masteradaptaterbleutooth.core.routes.Navigation
 import com.master.masteradaptaterbleutooth.core.ui.theme.MasterAdaptaterBleutoothTheme
 import com.master.masteradaptaterbleutooth.core.viewmodel.MainViewModel
+import com.master.masteradaptaterbleutooth.intro.presentation.IntroScreen
 
 @RequiresApi(Build.VERSION_CODES.S)
 class MainActivity : ComponentActivity() {
-
+    private lateinit var navController: NavHostController
     private val bluetoothManager by lazy {
         applicationContext.getSystemService(BluetoothManager::class.java)
     }
@@ -54,6 +58,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            /*
             val context = LocalContext.current
             val enableBluetoothLauncher = registerForActivityResult(
                 ActivityResultContracts.StartActivityForResult()
@@ -77,6 +82,7 @@ class MainActivity : ComponentActivity() {
                     arrayOf(BLUETOOTH_SCAN, BLUETOOTH_CONNECT)
                 )
             }
+             */
             MasterAdaptaterBleutoothTheme {
                 // Check to see if the Bluetooth classic feature is available.
                 val bluetoothAvailable: Boolean =
@@ -84,11 +90,12 @@ class MainActivity : ComponentActivity() {
                 // Check to see if the BLE feature is available.
                 val bluetoothLEAvailable: Boolean =
                     packageManager.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH_LE)
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                    Greeting(
-                        name = "Android BLE $bluetoothLEAvailable|B classic $bluetoothAvailable")
+                navController = rememberNavController()
 
-                }
+                Navigation(navC = navController)
+//                    Greeting(
+//                        name = "Android BLE $bluetoothLEAvailable|B classic $bluetoothAvailable")
+
             }
         }
 
