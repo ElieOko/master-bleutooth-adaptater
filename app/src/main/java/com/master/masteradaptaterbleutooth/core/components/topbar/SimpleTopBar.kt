@@ -1,4 +1,4 @@
-package com.example.jc_component.component.topbar
+package com.master.masteradaptaterbleutooth.core.components.topbar
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.padding
@@ -23,8 +23,8 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.example.jc_component.ui.theme.Green100
-import com.example.jc_component.ui.theme.Grey100
+import com.master.masteradaptaterbleutooth.core.ui.theme.Green100
+import com.master.masteradaptaterbleutooth.core.ui.theme.Grey100
 
 
 @OptIn(ExperimentalMaterial3Api::class)

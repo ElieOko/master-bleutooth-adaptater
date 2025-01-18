@@ -1,4 +1,4 @@
-package com.example.jc_component.component.text
+package com.master.masteradaptaterbleutooth.core.components.text
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding

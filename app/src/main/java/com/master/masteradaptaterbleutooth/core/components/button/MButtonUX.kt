@@ -1,4 +1,4 @@
-package com.example.jc_component.component.button
+package com.master.masteradaptaterbleutooth.core.components.button
 
 import androidx.compose.foundation.layout.Box
 

@@ -1,4 +1,4 @@
-package com.example.jc_component.component.button.model
+package com.master.masteradaptaterbleutooth.core.components.button.model
 
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter

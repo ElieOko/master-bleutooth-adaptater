@@ -1,4 +1,4 @@
-package com.example.jc_component.component.button
+package com.master.masteradaptaterbleutooth.core.components.button
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
@@ -12,8 +12,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.master.masteradaptaterbleutooth.core.ui.theme.ColorGenericB
 
 @Composable
 fun MButton(){
@@ -28,10 +30,13 @@ fun MButtonStructure(
     modifier : Modifier = Modifier,
     contentDesc : String = "Connexion UI",
     click :  () -> Unit,
+    textColor: Color = Color.Black,
     backgroundColor :Color = Color.Black,
     enabled : Boolean = true,
     sizeBorder : Int = 12,
-    content: @Composable RowScope.() -> Unit
+    icon : @Composable () -> Unit ={},
+    isLeft : Boolean = false,
+    content: @Composable RowScope.() -> Unit = {}
 ){
     Button(
         onClick = { click() },
@@ -43,7 +48,13 @@ fun MButtonStructure(
         shape = RoundedCornerShape(sizeBorder.dp)
         )
     {
-        Text(text = contentDesc)
+        if (isLeft){
+            icon()
+            Text(text = contentDesc.uppercase(),color = textColor,fontWeight = FontWeight.Bold)
+        }else{
+            Text(text = contentDesc.uppercase(),color = textColor,fontWeight = FontWeight.Bold)
+            icon()
+        }
        Row(content = content)
     }
 }
